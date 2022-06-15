@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Excite</title>
+    <style>
+      html {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 4vmin;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: grid;
+        gap: 1em;
+        padding: 1em;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        overflow-x: hidden;
+      }
+
+      button {
+        aspect-ratio: 1/1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: none;
+        border: 0.25em solid aqua;
+        font-size: inherit;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: darkorchid;
+        border-color: antiquewhite;
+        color: white;
+        transform: scale(1.5);
+      }
+
+      button:active {
+        background-color: antiquewhite;
+        border-color: darkorchid;
+        color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <script>
+      var sounds = [
+        'horn1.mp3',
+        'wow0.mp3',
+        'wow1.mp3',
+        'wow2.mp3',
+        'wow3.mp3',
+        'wow4.mp3',
+        'wow5.mp3',
+        'wow6.mp3',
+        'wow7.mp3',
+        'wow8.mp3',
+        'wow9.mp3',
+        'wow10.mp3',
+      ]
+
+      var adjective = ['wildly', 'incredible', 'so much']
+
+      var verb = ['excite', 'amaze', 'astonish']
+
+      function rand(list) {
+        return list[Math.floor(Math.random() * list.length)]
+      }
+
+      function excite() {
+        var file = './' + rand(sounds)
+        var audio = new Audio(file)
+        audio.play()
+      }
+
+      function render() {
+        var body = document.querySelector('body')
+
+        body.innerHTML = ''
+
+        for (var i = 0; i < sounds.length; i++) {
+          var button =
+            '<button onclick="excite()">' +
+            rand(adjective) +
+            '<br>' +
+            rand(verb) +
+            '</button>'
+
+          body.innerHTML += button
+        }
+      }
+
+      render()
+    </script>
+  </body>
+</html>
